@@ -12,16 +12,6 @@ export class ProductListComponent implements OnInit {
   imageMargin: number = 2;
   showImage: boolean = false;
   private _listFilter: string = '';
-  filteredProduct: IProduct[] = [];
-
-  get listFilter(): string {
-    return this._listFilter;
-  }
-
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredProduct = this.performFilter(value);
-  }
   products: IProduct[] = [
     {
       productId: 1,
@@ -44,10 +34,19 @@ export class ProductListComponent implements OnInit {
       imageUrl: 'assets/images/garden_cart.png',
     },
   ];
+  filteredProduct: IProduct[] = this.products;
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProduct = this.performFilter(value);
+  }
 
   ngOnInit(): void {
     this._listFilter = '';
-    console.log('ngOnInit');
   }
 
   toggleImage(): void {
