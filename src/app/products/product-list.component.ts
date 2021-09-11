@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   private _listFilter: string = '';
   products: IProduct[] = [];
-  filteredProduct: IProduct[] = this.products;
+  filteredProduct: IProduct[] = [];
 
   constructor(public productService: ProductService) {}
 
@@ -28,7 +28,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._listFilter = '';
+    this.products = this.productService.getProducts();
+    this.filteredProduct = this.products;
   }
 
   toggleImage(): void {
