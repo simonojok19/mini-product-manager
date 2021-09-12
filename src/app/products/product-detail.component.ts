@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
   }
 
-  async onBack(): Promise<void> {
+  async onBack(event: any): Promise<void> {
     await this.router.navigate(['/products']);
   }
 }
